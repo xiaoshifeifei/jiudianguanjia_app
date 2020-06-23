@@ -1,5 +1,15 @@
 <template>
-  <div class="sign">
-    <div>首页</div>
+  <div>
+
   </div>
 </template>
+
+<script>
+  export default {
+    
+  }
+</script>
+
+<style lang="less" scoped>
+
+</style>

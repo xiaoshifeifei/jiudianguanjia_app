@@ -9,16 +9,14 @@
 </template>
 
 <script>
-import Tabbar from '@/components/Tabbar.vue'
+import Tabbar from "@/components/Tabbar.vue";
 export default {
   components: {
     Tabbar
   }
-}
-/*
- * @ is an alias to /src
- * import home from '@/assets/logo.png'
- */
+};
+// @ is an alias to /src
+// import home from '@/assets/logo.png'
 </script>
 
 <style lang="stylus">
@@ -27,5 +25,6 @@ export default {
 html,body,#app{
 	width: 100%;
 	height: 100%;
+  background: #f9f9f9;
 }
 </style>
