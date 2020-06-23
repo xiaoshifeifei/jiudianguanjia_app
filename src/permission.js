@@ -1,6 +1,6 @@
 import router from './router'
 import store from './store'
-import { Notify } from 'vant';
+import { Notify } from 'vant'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken, getOpenid, getUserStatus } from '@/utils/auth' // get token from cookie
@@ -11,9 +11,9 @@ const errorMsg = message => {
   return Notify({
     message,
     type: 'danger',
-    duration: 1000,
-  });
-};
+    duration: 1000
+  })
+}
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['/login'] // no redirect whitelist
@@ -26,7 +26,7 @@ router.beforeEach(async (to, from, next) => {
   const hasToken = getToken()
   if (!_isWeixin) {
     if (to.path === '/noWeixin') {
-      next();
+      next()
     } else {
       next({
         path: '/noWeixin'
@@ -38,7 +38,7 @@ router.beforeEach(async (to, from, next) => {
       if (hasStatus) {
         if (hasToken) {
           if (to.path === '/login') {
-            // if is logged in, redirect to the home page
+          // if is loggin, redirect to the home page
             next({ path: '/' })
             NProgress.done()
           } else {
@@ -60,13 +60,13 @@ router.beforeEach(async (to, from, next) => {
           }
         }
       } else {
-        //没有登录，去跳转登录页
+        // 没有登录，去跳转登录页
         if (to.path === '/login') {
-          next();
+          next()
         } else {
           next({
             path: '/login'
-          });
+          })
         }
         NProgress.done()
       }
@@ -77,13 +77,13 @@ router.beforeEach(async (to, from, next) => {
           openid: getQueryVariable(window.location, 'openid')
         }
         await store.dispatch('user/saveOpenId', data)
-        //没有登录，去跳转登录页
+        // 没有登录，去跳转登录页
         if (to.path === '/login') {
-          next();
+          next()
         } else {
           next({
             path: '/login'
-          });
+          })
         }
         NProgress.done()
       }
@@ -96,7 +96,7 @@ router.beforeEach(async (to, from, next) => {
             token: getQueryVariable(window.location, 'token'),
             status,
             token_type,
-            refresh_token: getQueryVariable(window.location, 'refresh_token'),
+            refresh_token: getQueryVariable(window.location, 'refresh_token')
           }
           await store.dispatch('user/saveTokenOpenId', data)
           next(to.path)
@@ -106,13 +106,13 @@ router.beforeEach(async (to, from, next) => {
             status
           }
           await store.dispatch('user/saveStatus', data)
-          //没有登录，去跳转登录页
+          // 没有登录，去跳转登录页
           if (to.path === '/login') {
-            next();
+            next()
           } else {
             next({
               path: '/login'
-            });
+            })
           }
           NProgress.done()
         }

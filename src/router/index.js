@@ -1,87 +1,69 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-//组件
-import Login from "../views/homepage/Login.vue";
-import Home from "../views/homepage/index.vue";
-import Workbench from "../views/workbench/index.vue";
-import Schedule from "../views/schedule/index.vue";
-Vue.use(VueRouter);
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 export const constantRoutes = [
   {
     path: '/',
-    component: () => import('@/views/homepage/index.vue'),
-    meta: {
-      showTabbar: true
-    }
+    component: () => import('@/views/login/login.vue'),
+    name: 'login'
   },
   {
     path: '/login',
-    component: () => import('@/views/homepage/Login.vue')
+    component: () => import('@/views/login/login.vue'),
+    name: 'login'
   },
   {
     path: '/noWeixin',
-    component: () => import('@/views/noWeixin/index.vue')
+    component: () => import('@/views/noWeixin/index.vue'),
+    name: 'noWeixin'
   },
   {
-    path: "/index",
-    component: resolve => require(['@/views/homepage/index.vue'], resolve),
-    meta: {
-      showTabbar: true
-    }
+    path: '/clean',
+    component: () => import('@/views/clean/index.vue'),
+    name: 'clean'
   },
   {
-    path: "/workbench",
-    component: resolve => require(['@/views/workbench/index.vue'], resolve),
-    meta: {
-      showTabbar: true
-    }
+    path: '/invoice',
+    component: () => import('@/views/invoice/index.vue'),
+    name: 'invoice'
   },
   {
-    path: "/schedule",
-    name: "Schedule",
-    component: resolve => require(['@/views/schedule/index.vue'], resolve),
-    meta: {
-      showTabbar: true
-    }
+    path: '/checkout',
+    component: () => import('@/views/checkout/index.vue'),
+    name: 'checkout'
   },
-  // {
-  //   path: '/404',
-  //   component: () => import('@/views/404'),
-  //   hidden: true
-  // },
+  {
+    path: '/stay',
+    component: () => import('@/views/stay/index.vue'),
+    name: 'stay'
+  },
+  {
+    path: '/booking',
+    component: () => import('@/views/facilitiesBooking/index.vue'),
+    name: 'booking'
+  },
+  {
+    path: '/repairs',
+    component: () => import('@/views/repairs/index.vue'),
+    name: 'repairs'
+  },
+  {
+    path: '/car',
+    component: () => import('@/views/car/index.vue'),
+    name: 'car'
+  },
+  {
+    path: '/wakeup',
+    component: () => import('@/views/wakeup/index.vue'),
+    name: 'wakeup'
+  },
+  {
+    path: '/room',
+    component: () => import('@/views/room/index.vue'),
+    name: 'room'
+  }
 ]
 
-// 以下配置动态路由
-export const asyncRoutes = [{
-  path: "/",
-  name: "login",
-  component: Login
-},
-{
-  path: "/home",
-  name: "Home",
-  component: resolve => require(['@/views/homepage/index.vue'], resolve),
-  meta: {
-    showTabbar: true
-  }
-},
-{
-  path: "/workbench",
-  name: "Workbench",
-  component: Workbench,
-  meta: {
-    showTabbar: true
-  }
-},
-{
-  path: "/schedule",
-  name: "Schedule",
-  component: Schedule,
-  meta: {
-    showTabbar: true
-  }
-}
-];
 const createRouter = () => new VueRouter({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
@@ -92,4 +74,4 @@ export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
-export default router;
+export default router

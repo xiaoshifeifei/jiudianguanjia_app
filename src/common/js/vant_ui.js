@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue'
 import {
   Switch,
   Tabbar,
@@ -25,65 +25,38 @@ import {
   Area,
   Loading,
   NumberKeyboard,
-  ActionSheet,
-  Collapse,
-  CollapseItem,
-  Checkbox,
-  CheckboxGroup,
-  Rate,
-  Tag,
-  Notify,
-  DropdownMenu,
-  DropdownItem,
-  Sidebar, 
-  SidebarItem,
-  Step,
-  Steps,
-  Empty
-} from "vant";
+  ActionSheet
+} from 'vant'
+// import { Loading } from 'vant';
 
-import { Image as VanImage } from "vant";
+// eslint-disable-next-line no-duplicate-imports
+import { Image as VanImage } from 'vant'
 
-Vue.use(Search);
-Vue.use(Area);
-Vue.use(DatetimePicker);
-Vue.use(Popup);
-Vue.use(Picker);
-Vue.use(Divider);
-Vue.use(Cell);
-Vue.use(Lazyload);
-Vue.use(VanImage);
-Vue.use(Uploader);
-Vue.use(Field);
-Vue.use(Form);
-Vue.use(Toast);
-Vue.use(Switch);
-Vue.use(Tabbar);
-Vue.use(TabbarItem);
-Vue.use(Button);
-Vue.use(Tab);
-Vue.use(Tabs);
-Vue.use(List);
-Vue.use(PullRefresh);
-Vue.use(Sticky);
-Vue.use(Icon);
-Vue.use(ImagePreview);
-Vue.use(Icon);
-Vue.use(Loading);
-Vue.use(NumberKeyboard);
-Vue.use(ActionSheet);
-Vue.use(Collapse);
-Vue.use(CollapseItem);
-Vue.use(ActionSheet);
-Vue.use(Checkbox);
-Vue.use(CheckboxGroup);
-Vue.use(Rate);
-Vue.use(Tag);
-Vue.use(Notify);
-Vue.use(DropdownMenu);
-Vue.use(DropdownItem );
-Vue.use(Sidebar);
-Vue.use(SidebarItem);
-Vue.use(Step);
-Vue.use(Steps);
-Vue.use(Empty);
+Vue.use(Search)
+Vue.use(Area)
+Vue.use(DatetimePicker)
+Vue.use(Popup)
+Vue.use(Picker)
+Vue.use(Divider)
+Vue.use(Cell)
+Vue.use(Lazyload)
+Vue.use(VanImage)
+Vue.use(Uploader)
+Vue.use(Field)
+Vue.use(Form)
+Vue.use(Toast)
+Vue.use(Switch)
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
+Vue.use(Button)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(List)
+Vue.use(PullRefresh)
+Vue.use(Sticky)
+Vue.use(Icon)
+Vue.use(ImagePreview)
+Vue.use(Icon)
+Vue.use(Loading)
+Vue.use(NumberKeyboard)
+Vue.use(ActionSheet)
