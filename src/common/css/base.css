@@ -81,6 +81,7 @@ button{
 input{
   outline: none;
   border: none;
+  background:no-repeat;
 }
 button::after{ border: none;}
 i{
@@ -179,7 +180,7 @@ a:focus,*:focus {
 /*常用值*/
 .mt_5{margin-top: 5px;}
 .mt_10{margin-top: 10px;}
-.mt_20{margin-top: 20px;}
+.mt_15{margin-top: 15px;}
 .mt_30{margin-top: 30px;}
 .mt_40{margin-top: 40px;}
 .mt_50{margin-top: 50px;}

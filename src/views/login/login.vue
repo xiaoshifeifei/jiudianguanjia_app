@@ -1,49 +1,75 @@
 <template>
   <div class="login">
-    <div class="bg">
-      <img src="../../assets/images/login.png" alt />
-    </div>
-    <div class="login_form">
-      <div class="account">
-        <div>输入账号</div>
-        <div class="ipt">
-          <input
-            type="text"
+    <div class="loginBg">
+      <div class="login_form">
+        <div class="text">绑定管理账号</div>
+        <div class="lineBor"></div>
+        <div class="account ipt mt_15">
+          <label for="account">账号</label>
+          <input id="account"
             name="AdminName"
             v-model="loginForm.AdminName"
-            ref="AdminName"
-            placeholder="请输入你的账号"
             @blur="checkAdminName"
             @input="inputName"
-          />
+            ref="AdminName" type="text" placeholder="请输入账号">
         </div>
         <div class="err" v-if="isCheckAdminName">请输入正确的账号</div>
         <div v-else class="err"></div>
-        <div class="bor"></div>
-      </div>
-      <div class="psw">
-        <div>输入密码</div>
-        <div class="ipt">
-          <input
-            type="password"
+        <div class="account ipt">
+          <label for="pswd">密码</label>
+          <input id="pswd"
             name="AdminPassword"
             v-model="loginForm.AdminPassword"
             ref="AdminPassword"
-            placeholder="请输入你的密码"
             @blur="checkAdminPassword"
             @input="inputPassword"
-          />
+            type="password" placeholder="请输入密码">
         </div>
         <div class="err" v-if="isCheckAdminPassword">请输入正确的密码</div>
         <div v-else class="err"></div>
-        <div class="bor"></div>
       </div>
+      <!-- <div class="login_form">
+        <div class="account">
+          <div>输入账号</div>
+          <div class="ipt">
+            <input
+              type="text"
+              name="AdminName"
+              v-model="loginForm.AdminName"
+              ref="AdminName"
+              placeholder="请输入你的账号"
+              @blur="checkAdminName"
+              @input="inputName"
+            />
+          </div>
+          <div class="err" v-if="isCheckAdminName">请输入正确的账号</div>
+          <div v-else class="err"></div>
+          <div class="bor"></div>
+        </div>
+        <div class="psw">
+          <div>输入密码</div>
+          <div class="ipt">
+            <input
+              type="password"
+              name="AdminPassword"
+              v-model="loginForm.AdminPassword"
+              ref="AdminPassword"
+              placeholder="请输入你的密码"
+              @blur="checkAdminPassword"
+              @input="inputPassword"
+            />
+          </div>
+          <div class="err" v-if="isCheckAdminPassword">请输入正确的密码</div>
+          <div v-else class="err"></div>
+          <div class="bor"></div>
+        </div>
+      </div> -->
+      <div
+        class="btn"
+        :class="[isLogin && userStatus==1 ? 'bc_146eeb' : 'bc_c3c3c3']"
+        @click="handleLogin"
+      >绑定</div>
     </div>
-    <div
-      class="btn"
-      :class="[isLogin && userStatus==1 ? 'bc_146eeb' : 'bc_c3c3c3']"
-      @click="handleLogin"
-    >登录</div>
   </div>
 </template>
 <script>
@@ -139,40 +165,40 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.login {
-  position: relative;
-}
-.bg {
-  width: 100%;
-  height: 420px;
-}
-.bg img {
-  width: 100%;
+.loginBg{
+  width:100%;
+  height: 667px;
+  background: url('../../assets/images/login/bg.png') no-repeat;
+  background-size: 100%;
 }
 .login_form {
-  position: absolute;
-  top: 235px;
-  width: 345px;
-  height: 270px;
-  left: 15px;
-  border-radius: 10px;
-  background: #fff;
+  width:285px;
+  margin: 0 auto;
+  padding-top:230px
+}
+.text{
+  color: #1e96fc;
+  font-size:30px;
+  text-align: center;
+}
+.lineBor{
+  width:40px;
+  height: 3px;
+  background:#1e96fc;
+  margin: 5px auto;
 }
 .btn {
-  position: absolute;
-  top: 480px;
-  width: 300px;
-  left: 37px;
-  height: 57px;
-  // background: rgba(195, 195, 195, 1);
-  box-shadow: 0px 5px 10px rgba(195, 195, 195, 0.25);
-  border-radius: 28px;
+  width: 345px;
+  height: 40px;
+  margin: 190px auto 0;
+  background: linear-gradient(#51aefe, #37a2fd 62%, #1e96fc);
+  border-radius: 20px;
   text-align: center;
-  line-height: 57px;
+  line-height: 40px;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   font-family: PingFang SC;
-  font-weight: bold;
+  font-weight: 700;
 }
 .bc_146eeb {
   background: #146eeb;
@@ -183,26 +209,24 @@ export default {
 .btn.active {
   background: #146eeb;
 }
-.account {
-  padding: 20px;
-}
-.psw {
-  padding: 0 20px 20px 20px;
+label{
+  color:#1e96fc;
+  font-size:15px;
+  padding: 0 10px 0 15px;
 }
 .ipt {
+  width:285px;
   font-size: 13px;
-  height: 20px;
-  margin: 10px 0;
+  height: 35px;
   color: #999;
-  line-height: 20px;
+  line-height: 35px;
+  background:#fff;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px 0px rgba(0,8,20,0.05);
 }
 .err {
   height: 25px;
   color: #e81818;
   font-size: 10px;
-}
-.bor {
-  height: 5px;
-  border-bottom: 1px solid #f1f1f1;
 }
 </style>
