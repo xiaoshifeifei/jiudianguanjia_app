@@ -51,7 +51,6 @@ export default {
     async getCheckout() {
       let res = await checkoutOrder({ OrderID: this.orderId })
       this.checkoutData = res.data
-      console.log(this.checkoutData, 11)
     },
     cancleHandle() {
       this.checkoutData.OrderStatus = -1
