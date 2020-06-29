@@ -5,6 +5,7 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken, getOpenid, getUserStatus } from '@/utils/auth' // get token from cookie
 import { getWxCodeUrl, getQueryVariable, _isWeixin } from '@/utils/authorize'
+// eslint-disable-next-line camelcase
 import { appid, token_type } from '@/setting'
 // import getPageTitle from '@/utils/get-page-title'
 const errorMsg = message => {
@@ -95,7 +96,9 @@ router.beforeEach(async (to, from, next) => {
             openid: getQueryVariable(window.location, 'openid'),
             token: getQueryVariable(window.location, 'token'),
             status,
+            // eslint-disable-next-line camelcase
             token_type,
+            // eslint-disable-next-line camelcase
             refresh_token: getQueryVariable(window.location, 'refresh_token')
           }
           await store.dispatch('user/saveTokenOpenId', data)
