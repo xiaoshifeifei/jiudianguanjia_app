@@ -26,7 +26,7 @@ export function getWxCodeUrl(appid, redirect_url, auth_url) {
   codeUrl += '?appid=' + appid
   codeUrl += '&redirect_uri=' + auth_redirect_uri
   codeUrl += '&response_type=code'
-  codeUrl += '&scope=snsapi_base'/* snsapi_base snsapi_userinfo*/
+  codeUrl += '&scope=snsapi_userinfo'/* snsapi_base snsapi_userinfo*/
   codeUrl += '&state=' + redirect_uri
   codeUrl += '#wechat_redirect'
   return codeUrl

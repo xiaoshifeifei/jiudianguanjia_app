@@ -9,6 +9,7 @@ import './common/css/customer_vant.scss'
 import './common/css/base.css'
 
 import './common/js/vant_ui.js'
+import '@/permission'
 
 Vue.config.productionTip = false
 
