@@ -1,4 +1,4 @@
- /*
+/*
  * @Author: CZTXXL
  * @Date: 2020-05-28 11:17:27
  * @LastEditTime: 2020-06-24 14:33:26
@@ -12,7 +12,7 @@ let Socket = ''
 let setIntervalWebsocketPush = null
 let stateOfReconnect = false
 let channel = 'clean_order'
-let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9qZGdqLnFtd2x4Y3guY29tIiwiYXVkIjoiaHR0cDpcL1wvamRnai5xbXdseGN4LmNvbSIsImlhdCI6MTU5MTE3NDQ3NywibmJmIjoxNTkxMTc0NDc3LCJzY29wZSI6ImFjY2VzcyIsImV4cCI6MTU5MTE4MTY3NywiZGF0YSI6eyJ1aWQiOjF9fQ.dGDcgeZ8cC3F3EVWCNO71cHIsXLukbsMbqYLi_S_6DE';
+let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9qZGdqLnFtd2x4Y3guY29tIiwiYXVkIjoiaHR0cDpcL1wvamRnai5xbXdseGN4LmNvbSIsImlhdCI6MTU5MTE3NDQ3NywibmJmIjoxNTkxMTc0NDc3LCJzY29wZSI6ImFjY2VzcyIsImV4cCI6MTU5MTE4MTY3NywiZGF0YSI6eyJ1aWQiOjF9fQ.dGDcgeZ8cC3F3EVWCNO71cHIsXLukbsMbqYLi_S_6DE'
 
 /* 建立连接 */
 export function createSocket() {
@@ -28,18 +28,20 @@ export function createSocket() {
   }
 }
 export function sendPing() {
-  // Socket.send(JSON.stringify({
-  //   channel: channel,
-  //   type: 'ping',
-  //   token: token
-  // }))
-  // setIntervalWebsocketPush = setInterval(() => {
-  //   Socket.send(JSON.stringify({
-  //     channel: channel,
-  //     type: 'ping',
-  //     token: token
-  //   }))
-  // }, 5000)
+  /*
+   * Socket.send(JSON.stringify({
+   *   channel: channel,
+   *   type: 'ping',
+   *   token: token
+   * }))
+   * setIntervalWebsocketPush = setInterval(() => {
+   *   Socket.send(JSON.stringify({
+   *     channel: channel,
+   *     type: 'ping',
+   *     token: token
+   *   }))
+   * }, 5000)
+   */
 }
 // 发送心跳
 export function onopenWS() {
@@ -58,9 +60,9 @@ export function onerrorWS() {
     createSocket()
     stateOfReconnect = false
     sendWSPush({
-      channel: channel,
+      channel,
       type: 'auth',
-      token: token
+      token
     })
   }, 5000)
 }
