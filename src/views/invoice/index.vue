@@ -23,8 +23,8 @@
       </div>
     </div>
     <div v-if="invoiceData.OrderStatus == 0" class="btnBox btnBox1">
-      <div class="btn cancle ">取消</div>
-      <div class="btn confirm ">接受</div>
+      <div class="btn cancle" @click="cancleHandle()">取消</div>
+      <div class="btn confirm" @click="finishedHandle()">接受</div>
     </div>
     <!-- <div class="btnBox">
       <div class="btn finished">完成</div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { invoiceOrder } from '@/api/order'
+import { invoiceOrder, invoiceOperate, invoiceCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -53,11 +53,17 @@ export default {
       this.invoiceData = res.data
       console.log(this.invoiceData, 99)
     },
-    cancleHandle() {
-      this.invoiceData.OrderStatus = -1
+    async cancleHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await invoiceCancle({ InvoiceOrderIDs: ids, CancleInvoiceStatus: -1 })
+      this.getInvoice()
     },
-    finishedHandle() {
-      this.invoiceData.OrderStatus = 1
+    async finishedHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await invoiceOperate({ InvoiceOrderIDs: ids, OperateInvoiceStatus: 1 })
+      this.getInvoice()
     }
   }
 }

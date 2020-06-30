@@ -14,7 +14,7 @@
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{carData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">手机号：</span><span class="fr">{{carData.Tel}}</span></div>
         <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">0806-大床房</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{carData.RoomNumber}}</span></div>
+        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{carData.RoomNumber}}-{{carData.Model}}</span></div>
         <div class="bor_b"></div>
         <div class="clearfix pt_15"><span class="fl">租赁物品：</span><span class="fr">{{carData.GoodsName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">租赁车牌：</span><span class="fr">{{carData.CarNumber}}</span></div>
@@ -33,8 +33,8 @@
       </div>
     </div>
     <div v-if="carData.Status == 0" class="btnBox mt_50 mb_5">
-      <div class="btn cancle ">取消</div>
-      <div class="btn confirm ">接受</div>
+      <div class="btn cancle" @click="cancleHandle()">取消</div>
+      <div class="btn confirm" @click="finishedHandle()">接受</div>
     </div>
     <div v-else class="btnBox mt_50 mb_5">
       <!-- <div class="btn finished">完成</div> -->
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { carOrder } from '@/api/order'
+import { carOrder, carOperate, carCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -63,11 +63,13 @@ export default {
       this.carData = res.data
       console.log(this.carData, 99)
     },
-    cancleHandle() {
-      this.carData.OrderStatus = -1
+    async cancleHandle() {
+      await carCancle({ OrderID: this.orderId, CancelOrderStatus: -1 })
+      this.getCar()
     },
-    finishedHandle() {
-      this.carData.OrderStatus = 1
+    async finishedHandle() {
+      await carOperate({ OrderID: this.orderId, CompleteOrderStatus: 1 })
+      this.getCar()
     }
   }
 }

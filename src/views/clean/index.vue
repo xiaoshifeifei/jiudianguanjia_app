@@ -5,7 +5,7 @@
       <div class="box clearfix">
         <div class="clearfix">
           <span class="fl fz_15 fw_7">{{cleanData.HotelName}}</span>
-          <span v-if="cleanData.OrderStatus == 0" class="fr c_red">待处理</span>
+          <span v-if="cleanData.OrderStatus == 0" class="fr c_red">待清扫</span>
           <span v-else-if="cleanData.OrderStatus == 1" class="fr c_red">已完成</span>
           <span v-else class="fr c_red">已取消</span>
         </div>
@@ -22,7 +22,7 @@
         <div v-if="cleanData.OrderStatus == 1" class="clearfix pt_15"><span class="fl">完成时间：</span><span class="fr">{{cleanData.UpdateDate}}</span></div>
       </div>
     </div>
-    <div v-if="cleanData.OrderStatus == 0" class="btnBox">
+    <div v-if="cleanData.OrderStatus == 0" class="btnBox btnBox1">
       <div class="btn cancle" @click="cancleHandle()">取消</div>
       <div class="btn confirm" @click="finishedHandle()">完成</div>
     </div>
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import { cleanOrder } from '@/api/order'
+import { cleanOrder, cleanOperate, cleanCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '2',
+      orderId: '1',
       cleanData: {}
     }
   },
@@ -51,13 +51,14 @@ export default {
     async getClean() {
       let res = await cleanOrder({ OrderID: this.orderId })
       this.cleanData = res.data
-      console.log(this.cleanData, 11)
     },
-    cancleHandle() {
-      this.cleanData.OrderStatus = -1
+    async cancleHandle() {
+      await cleanCancle({ OrderID: this.orderId, CancelOrderStatus: -1 })
+      this.getClean()
     },
-    finishedHandle() {
-      this.cleanData.OrderStatus = 1
+    async finishedHandle() {
+      await cleanOperate({ OrderID: this.orderId, OperateOrderStatus: 1 })
+      this.getClean()
     }
   }
 }
