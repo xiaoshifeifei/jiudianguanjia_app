@@ -310,7 +310,7 @@ module.exports = {
     "no-delete-var": 2, // 禁止删除变量
     //"no-shadow": 2, // 禁止变量声明覆盖外层作用域的变量
     "no-shadow-restricted-names": 2, // 关键字不能被遮蔽
-    "no-use-before-define": 2, // 禁止定义前使用
+    //"no-use-before-define": 2, // 禁止定义前使用
     // 代码风格
     "array-bracket-newline": [2, 'consistent'], // 在数组开括号后和闭括号前强制换行
     "array-bracket-spacing": 2, // 强制在括号内前后使用空格
