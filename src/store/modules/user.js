@@ -41,7 +41,7 @@ const actions = {
   login({ commit }, userInfo) {
     const { AdminName, AdminPassword } = userInfo
     return new Promise((resolve, reject) => {
-      login({ Account: AdminName.trim(), Password: AdminPassword.trim(), OpenId: getOpenid() }).then(response => {
+      login({ AdminName: AdminName.trim(), AdminPassword: AdminPassword.trim(), OpenId: getOpenid() }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
         commit('SET_USERSTATUS', data.status)
