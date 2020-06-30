@@ -21,7 +21,7 @@
         </div>
         <!-- <div class="clearfix pt_15"><span class="fl">维修原因：</span><span class="fr">0806-大床房</span></div> -->
         <div class="clearfix pt_15"><span class="fl">维修详情：</span></div>
-        <div>{{repairData.Reamrk}}</div>
+        <div>{{repairData.Remark}}</div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{repairData.SerialNumber}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{repairData.CreateDate}}</span></div>

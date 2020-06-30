@@ -11,7 +11,7 @@
         </div>
         <div class="fz_15 order pt_15">发票订单</div>
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{invoiceData.HotelName}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{invoiceData.RoomNumber}}</span></div>
+        <!-- <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{invoiceData.RoomNumber}}</span></div> -->
         <div class="clearfix pt_15"><span class="fl">名字：</span><span class="fr">{{invoiceData.Title}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{invoiceData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">电子邮箱：</span><span class="fr">{{invoiceData.Email}}</span></div>

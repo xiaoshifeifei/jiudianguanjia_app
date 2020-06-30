@@ -13,14 +13,14 @@
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{stayData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{stayData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">手机号：</span><span class="fr">{{stayData.Tel}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{stayData.Tel}}</span></div>
+        <!-- <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{stayData.Tel}}</span></div> -->
         <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{stayData.RoomNumber}}-{{stayData.Model}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{stayData.OrderSerialNo}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{stayData.CreateDate}}</span></div>
         <div class="clearfix pt_15"><span class="fl">入住时间：</span><span class="fr">{{stayData.ContinueLiveDate}}</span></div>
         <div class="clearfix pt_15"><span class="fl">离店时间：</span><span class="fr">{{stayData.CheckOutDate}}</span></div>
-        <div v-if="stayData.OrderStatus == 1 || stayData.OrderStatus==-1" class="clearfix pt_15"><span class="fl">共计：</span><span class="fr">{{stayData.OrderSerialNo}}</span></div>
+        <div v-if="stayData.OrderStatus == 1 || stayData.OrderStatus==-1" class="clearfix pt_15"><span class="fl">共计：</span><span class="fr">{{stayData.StayDays}}晚</span></div>
       </div>
     </div>
     <div v-if="stayData.OrderStatus == 0" class="btnBox btnBox1">

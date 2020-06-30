@@ -12,7 +12,7 @@
         <div class="fz_15 order pt_15">叫醒订单</div>
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">知了酒店</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{wakeupData.UserName}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">0806-大床房</span></div>
+        <!-- <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">0806-大床房</span></div> -->
         <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{wakeupData.RoomNumber}}-{{wakeupData.Model}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{wakeupData.OrderSerialNo}}</span></div>

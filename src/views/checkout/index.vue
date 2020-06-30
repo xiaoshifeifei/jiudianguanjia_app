@@ -12,8 +12,8 @@
         <div class="fz_15 order pt_15">退房订单</div>
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{checkoutData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{checkoutData.UserName}}</span></div>
-         <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{checkoutData.FloorNumber}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{checkoutData.RoomNumber}}</span></div>
+         <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{checkoutData.FloorNumber}}层</span></div>
+        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{checkoutData.RoomNumber}}-{{checkoutData.Model}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{checkoutData.OrderSerialNo}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{checkoutData.CreateDate}}</span></div>
