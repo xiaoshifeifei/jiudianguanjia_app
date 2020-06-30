@@ -4,23 +4,23 @@
       <div class="bor"></div>
       <div class="box clearfix mb_30">
         <div class="clearfix">
-          <span class="fl fz_15 fw_7">知了酒店</span>
+          <span class="fl fz_15 fw_7">{{carData.HotelName}}</span>
           <span v-if="carData.Status == 0" class="fr c_red">待处理</span>
           <span v-else-if="carData.Status == 1" class="fr c_red">已完成</span>
           <span v-else class="fr c_red">已取消</span>
         </div>
         <div class="fz_15 order pt_15">租车订单</div>
-        <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">知了酒店</span></div>
+        <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{carData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{carData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">手机号：</span><span class="fr">{{carData.Tel}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">0806-大床房</span></div>
+        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{carData.FloorNumber}}层</span></div>
         <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{carData.RoomNumber}}-{{carData.Model}}</span></div>
         <div class="bor_b"></div>
         <div class="clearfix pt_15"><span class="fl">租赁物品：</span><span class="fr">{{carData.GoodsName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">租赁车牌：</span><span class="fr">{{carData.CarNumber}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">租金：</span><span class="fr">0806-大床房</span></div>
+        <div class="clearfix pt_15"><span class="fl">租金：</span><span class="fr">{{carData.RentPrice}}</span></div>
         <div class="clearfix pt_15"><span class="fl">租车图片：</span></div>
-        <div>
+        <div class="t_c">
           <img class="cars" :src="carData.CoverImgUrl">
         </div>
         <div class="dash"></div>
@@ -83,7 +83,7 @@ export default {
     height: 100%;
   }
   .cars{
-    width:100%
+    width:80%;
   }
   .btnBox2{
     position: absolute;

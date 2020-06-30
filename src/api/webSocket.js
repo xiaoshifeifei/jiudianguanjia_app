@@ -95,7 +95,7 @@ export function sendWSPush(obj) {
 /* 关闭 */
 export function oncloseWS(e) {
   clearInterval(setIntervalWebsocketPush)
-  Socket.onclose = function () { }
+  Socket.onclose = function () { console.log('websocket关闭连接') }
   Socket.close()
   Socket = ''
   console.log('websocket已断开')
