@@ -19,9 +19,13 @@ export function createSocket() {
   if (!Socket) {
     console.log('创建websocket连接')
     Socket = new WebSocket(WS_URL)
+    // eslint-disable-next-line no-use-before-define
     Socket.onopen = onopenWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onmessage = onmessageWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onerror = onerrorWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onclose = oncloseWS
   } else {
     console.log('websocket已连接')
