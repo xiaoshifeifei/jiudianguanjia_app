@@ -13,6 +13,11 @@ export const constantRoutes = [
     name: 'login'
   },
   {
+    path: '/index',
+    component: () => import('@/views/index.vue'),
+    name: 'index'
+  },
+  {
     path: '/noWeixin',
     component: () => import('@/views/noWeixin/index.vue'),
     name: 'noWeixin'
