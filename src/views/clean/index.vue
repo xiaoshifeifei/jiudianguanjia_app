@@ -42,7 +42,13 @@ export default {
     }
   },
   created() {
-    // this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    /*
+     * let url = 'http://bweb.capasky.com/bookingService/clean?orderId=1'
+     * this.orderId = url.split('?')[1].split('=')[1]
+     */
+    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
+      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    }
   },
   mounted() {
     this.getClean()

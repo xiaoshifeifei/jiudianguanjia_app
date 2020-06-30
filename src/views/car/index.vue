@@ -52,7 +52,9 @@ export default {
     }
   },
   created() {
-    // this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
+      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    }
   },
   mounted() {
     this.getCar()

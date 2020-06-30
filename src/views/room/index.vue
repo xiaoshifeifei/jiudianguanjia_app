@@ -52,7 +52,9 @@ export default {
     }
   },
   created() {
-    // this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
+      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    }
   },
   mounted() {
     this.getRoom()
@@ -61,7 +63,6 @@ export default {
     async getRoom() {
       let res = await roomOrder({ OrderID: this.orderId })
       this.roomData = res.data
-      console.log(this.roomData, 11)
     },
     async cancleHandle() {
       let ids = []

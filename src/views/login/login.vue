@@ -153,7 +153,7 @@ export default {
       this.$store
         .dispatch('user/login', this.loginForm)
         .then(() => {
-          this.$router.push('/')
+          this.$router.push('/index')
           this.loading = false
         })
         .catch(error => {
