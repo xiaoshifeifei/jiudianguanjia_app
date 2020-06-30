@@ -13,7 +13,7 @@
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{repairData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{repairData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{repairData.FloorNumber}}层</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{repairData.RoomNumber}}</span></div>
+        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{repairData.RoomNumber}}-{{repairData.Model}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">报修图片：</span></div>
         <div class="imgBox pt_15">
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { repairOrder } from '@/api/order'
+import { repairOrder, repairOperate, repairCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -58,13 +58,14 @@ export default {
     async getRepair() {
       let res = await repairOrder({ OrderID: this.orderId })
       this.repairData = res.data
-      console.log(this.repairData, 99)
     },
-    cancleHandle() {
-      this.repairData.OrderStatus = -1
+    async cancleHandle() {
+      await repairCancle({ OrderID: this.orderId, CancelOrderStatus: -1 })
+      this.getRepair()
     },
-    finishedHandle() {
-      this.repairData.OrderStatus = 1
+    async finishedHandle() {
+      await repairOperate({ OrderID: this.orderId, OperateOrderStatus: 1 })
+      this.getRepair()
     }
   }
 }

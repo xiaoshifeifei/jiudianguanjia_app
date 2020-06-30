@@ -13,7 +13,7 @@
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{roomData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{roomData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{roomData.FloorNumber}}层</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{roomData.RoomNumber}}</span></div>
+        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{roomData.RoomNumber}}-{{roomData.Model}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">客房服务物品：</span></div>
         <div v-for="item in roomData.serviceOrderDetails" :key="item.GoodsID" class="clearfix pt_15">
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { roomOrder } from '@/api/order'
+import { roomOrder, roomOperate, roomCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -63,11 +63,17 @@ export default {
       this.roomData = res.data
       console.log(this.roomData, 11)
     },
-    cancleHandle() {
-      this.roomData.OrderStatus = -1
+    async cancleHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await roomCancle({ OrderIDs: ids, CancelOrderStatus: -1 })
+      this.getRoom()
     },
-    finishedHandle() {
-      this.roomData.OrderStatus = 1
+    async finishedHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await roomOperate({ OrderIDs: ids, OperateOrderStatus: 1 })
+      this.getRoom()
     }
   }
 }

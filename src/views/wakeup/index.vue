@@ -23,8 +23,8 @@
       </div>
     </div>
     <div v-if="wakeupData.OrderStatus == 0" class="btnBox btnBox1">
-      <div class="btn cancle">取消</div>
-      <div class="btn confirm">完成</div>
+      <div class="btn cancle" @click="cancleHandle()">取消</div>
+      <div class="btn confirm" @click="finishedHandle()">完成</div>
     </div>
     <!-- <div class="btnBox">
       <div class="btn finished">完成</div>
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import { wakeupOrder } from '@/api/order'
+import { wakeupOrder, wakeupOperate, wakeupCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '6',
+      orderId: '1',
       wakeupData: {}
     }
   },
@@ -51,13 +51,18 @@ export default {
     async getWakeup() {
       let res = await wakeupOrder({ OrderID: this.orderId })
       this.wakeupData = res.data
-      console.log(this.stayData, 11)
     },
-    cancleHandle() {
-      this.wakeupData.OrderStatus = -1
+    async cancleHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await wakeupCancle({ OrderIDs: ids, CancelOrderStatus: -1 })
+      this.getWakeup()
     },
-    finishedHandle() {
-      this.wakeupData.OrderStatus = 1
+    async finishedHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await wakeupOperate({ OrderIDs: ids, OperateOrderStatus: 1 })
+      this.getWakeup()
     }
   }
 }

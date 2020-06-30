@@ -13,15 +13,15 @@
         <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{bookingData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{bookingData.UserName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">手机号：</span><span class="fr">{{bookingData.Tel}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{bookingData.FloorNumber}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{bookingData.RoomNumber}}</span></div>
+        <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">{{bookingData.FloorNumber}}层</span></div>
+        <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{bookingData.RoomNumber}}-{{bookingData.Model}}</span></div>
         <div class="clearfix pt_15"><span class="fl">服务项目：</span><span class="fr">{{bookingData.FacilityName}}</span></div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{bookingData.SerialNumber}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{bookingData.CreateDate}}</span></div>
         <div class="clearfix pt_15"><span class="fl">预定时间：</span><span class="fr">{{bookingData.UseBeginDate}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">使用时间：</span><span class="fr">{{bookingData.UseEndDate}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{bookingData.UpdateDate}}</span></div>
+        <div v-if="bookingData.Status == 1" class="clearfix pt_15"><span class="fl">使用时间：</span><span class="fr">{{bookingData.UseEndDate}}</span></div>
+        <div v-if="bookingData.Status == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{bookingData.UpdateDate}}</span></div>
       </div>
     </div>
     <div v-if="bookingData.Status == 0" class="btnBox btnBox1">
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { bookingOrder } from '@/api/order'
+import { bookingOrder, bookingOperate, bookingCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -53,13 +53,15 @@ export default {
     async getBooking() {
       let res = await bookingOrder({ OrderID: this.orderId })
       this.bookingData = res.data
-      console.log(this.bookingData, 99)
     },
-    cancleHandle() {
-      this.bookingData.Status = -1
+    async cancleHandle() {
+      await bookingCancle({ OrderID: this.orderId, CancelOrderStatus: -1 })
+      this.getBooking()
     },
-    finishedHandle() {
-      this.bookingData.Status = 1
+    // 。。。?
+    async finishedHandle() {
+      await bookingOperate({ OrderID: this.orderId, OperateOrderStatus: 1 })
+      this.getBooking()
     }
   }
 }

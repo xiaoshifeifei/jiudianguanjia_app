@@ -24,8 +24,8 @@
       </div>
     </div>
     <div v-if="stayData.OrderStatus == 0" class="btnBox btnBox1">
-      <div class="btn cancle ">取消</div>
-      <div class="btn confirm ">接受</div>
+      <div class="btn cancle" @click="cancleHandle()">取消</div>
+      <div class="btn confirm" @click="finishedHandle()">接受</div>
     </div>
     <!-- <div class="btnBox">
       <div class="btn finished">完成</div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { stayOrder } from '@/api/order'
+import { stayOrder, stayOperate, stayCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -54,11 +54,17 @@ export default {
       this.stayData = res.data
       console.log(this.stayData, 11)
     },
-    cancleHandle() {
-      this.stayData.OrderStatus = -1
+    async cancleHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await stayCancle({ OrderIDs: ids, CancelOrderStatus: -1 })
+      this.getStay()
     },
-    finishedHandle() {
-      this.stayData.OrderStatus = 1
+    async finishedHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await stayOperate({ OrderIDs: ids, OperateOrderStatus: 1 })
+      this.getStay()
     }
   }
 }

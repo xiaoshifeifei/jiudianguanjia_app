@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { checkoutOrder } from '@/api/order'
+import { checkoutOrder, checkoutOperate, checkoutCancle } from '@/api/order'
 export default {
   data() {
     return {
@@ -52,11 +52,17 @@ export default {
       let res = await checkoutOrder({ OrderID: this.orderId })
       this.checkoutData = res.data
     },
-    cancleHandle() {
-      this.checkoutData.OrderStatus = -1
+    async cancleHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await checkoutCancle({ OrderIDs: ids, CancelOrderStatus: -1 })
+      this.getCheckout()
     },
-    finishedHandle() {
-      this.checkoutData.OrderStatus = 1
+    async finishedHandle() {
+      let ids = []
+      ids.push(this.orderId)
+      await checkoutOperate({ OrderIDs: ids, OperateOrderStatus: 1 })
+      this.getCheckout()
     }
   }
 }
