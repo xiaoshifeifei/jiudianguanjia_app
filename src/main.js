@@ -7,6 +7,8 @@ import 'amfe-flexible'
 // 自定义vant 组件样式 （已限定页面 不影响全局）
 import './common/css/customer_vant.scss'
 import './common/css/base.css'
+import './common/css/gast.css'
+import './common/css/fonts/iconfont.css'
 
 import './common/js/vant_ui.js'
 // import '@/permission'
