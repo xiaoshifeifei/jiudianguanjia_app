@@ -190,7 +190,7 @@ export default {
 .btn {
   width: 345px;
   height: 40px;
-  margin: 190px auto 0;
+  margin: 130px auto 0;
   background: linear-gradient(#51aefe, #37a2fd 62%, #1e96fc);
   border-radius: 20px;
   text-align: center;
