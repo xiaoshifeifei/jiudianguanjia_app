@@ -94,7 +94,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo({ SupplierUserID: state.uid }).then(response => {
+      getInfo({ AdminID: state.uid }).then(response => {
         const { data } = response
         commit('SET_USERINFO', data)
         resolve()
