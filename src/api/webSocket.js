@@ -19,9 +19,13 @@ export function createSocket() {
   if (!Socket) {
     console.log('创建websocket连接')
     Socket = new WebSocket(WS_URL)
+    // eslint-disable-next-line no-use-before-define
     Socket.onopen = onopenWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onmessage = onmessageWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onerror = onerrorWS
+    // eslint-disable-next-line no-use-before-define
     Socket.onclose = oncloseWS
   } else {
     console.log('websocket已连接')
@@ -91,7 +95,7 @@ export function sendWSPush(obj) {
 /* 关闭 */
 export function oncloseWS(e) {
   clearInterval(setIntervalWebsocketPush)
-  Socket.onclose = function () { }
+  Socket.onclose = function () { console.log('websocket关闭连接') }
   Socket.close()
   Socket = ''
   console.log('websocket已断开')

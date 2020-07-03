@@ -153,7 +153,7 @@ export default {
       this.$store
         .dispatch('user/login', this.loginForm)
         .then(() => {
-          this.$router.push('/')
+          this.$router.push('/index')
           this.loading = false
         })
         .catch(error => {
@@ -167,7 +167,7 @@ export default {
 <style lang="less" scoped>
 .loginBg{
   width:100%;
-  height: 667px;
+  // height: 667px;
   background: url('../../assets/images/login/bg.png') no-repeat;
   background-size: 100%;
 }
@@ -190,7 +190,7 @@ export default {
 .btn {
   width: 345px;
   height: 40px;
-  margin: 190px auto 0;
+  margin: 130px auto 0;
   background: linear-gradient(#51aefe, #37a2fd 62%, #1e96fc);
   border-radius: 20px;
   text-align: center;

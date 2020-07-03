@@ -4,13 +4,18 @@ Vue.use(VueRouter)
 export const constantRoutes = [
   {
     path: '/',
-    component: () => import('@/views/login/login.vue'),
+    component: () => import('@/views/index.vue'),
     name: 'login'
   },
   {
     path: '/login',
     component: () => import('@/views/login/login.vue'),
     name: 'login'
+  },
+  {
+    path: '/index',
+    component: () => import('@/views/index.vue'),
+    name: 'index'
   },
   {
     path: '/noWeixin',
