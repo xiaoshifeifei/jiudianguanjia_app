@@ -43,8 +43,8 @@ export default {
     }
   },
   created() {
-    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
-      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    if (this.$route.query.OrderID) {
+      this.orderId = this.$route.query.OrderID
     }
   },
   mounted() {
@@ -54,7 +54,6 @@ export default {
     async getStay() {
       let res = await stayOrder({ OrderID: this.orderId })
       this.stayData = res.data
-      console.log(this.stayData, 11)
     },
     async cancleHandle() {
       let ids = []

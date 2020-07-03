@@ -52,8 +52,8 @@ export default {
     }
   },
   created() {
-    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
-      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    if (this.$route.query.OrderID) {
+      this.orderId = this.$route.query.OrderID
     }
   },
   mounted() {

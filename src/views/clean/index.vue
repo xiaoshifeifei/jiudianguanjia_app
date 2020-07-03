@@ -46,12 +46,12 @@ export default {
      * let url = 'http://bweb.capasky.com/bookingService/clean?orderId=1'
      * this.orderId = url.split('?')[1].split('=')[1]
      */
-    if (this.$route.path && this.$route.path.indexOf('?') == 1) {
-      this.orderId = this.$route.path.split('?')[1].split('=')[1]
+    console.log(this.$route.path, 11111, this.$route.query.OrderID, this.$route)
+    if (this.$route.query.OrderID) {
+      this.orderId = this.$route.query.OrderID
     }
   },
   mounted() {
-    console.log(this.orderId, 9999)
     this.getClean()
   },
   methods: {
@@ -71,6 +71,8 @@ export default {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>
 
 
