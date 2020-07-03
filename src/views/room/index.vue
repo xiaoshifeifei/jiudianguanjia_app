@@ -47,7 +47,7 @@ import { roomOrder, roomOperate, roomCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '2',
+      orderId: '',
       roomData: {}
     }
   },

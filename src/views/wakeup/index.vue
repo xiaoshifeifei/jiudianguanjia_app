@@ -37,7 +37,7 @@ import { wakeupOrder, wakeupOperate, wakeupCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '1',
+      orderId: '',
       wakeupData: {}
     }
   },

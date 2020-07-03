@@ -38,7 +38,7 @@ import { stayOrder, stayOperate, stayCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '6',
+      orderId: '',
       stayData: {}
     }
   },

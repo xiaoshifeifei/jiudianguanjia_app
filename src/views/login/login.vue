@@ -167,7 +167,7 @@ export default {
 <style lang="less" scoped>
 .loginBg{
   width:100%;
-  height: 667px;
+  // height: 667px;
   background: url('../../assets/images/login/bg.png') no-repeat;
   background-size: 100%;
 }

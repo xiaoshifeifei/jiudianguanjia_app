@@ -39,7 +39,7 @@ import { bookingOrder, bookingOperate, bookingCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '1',
+      orderId: '',
       bookingData: {}
     }
   },

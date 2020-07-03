@@ -44,7 +44,7 @@ import { repairOrder, repairOperate, repairCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '1',
+      orderId: '',
       repairData: {}
     }
   },

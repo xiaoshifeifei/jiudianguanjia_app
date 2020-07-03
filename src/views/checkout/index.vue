@@ -37,7 +37,7 @@ import { checkoutOrder, checkoutOperate, checkoutCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '2',
+      orderId: '',
       checkoutData: {}
     }
   },

@@ -37,7 +37,7 @@ import { invoiceOrder, invoiceOperate, invoiceCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '11',
+      orderId: '',
       invoiceData: {}
     }
   },

@@ -37,7 +37,7 @@ import { cleanOrder, cleanOperate, cleanCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '1',
+      orderId: '',
       cleanData: {}
     }
   },
@@ -51,6 +51,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.orderId, 9999)
     this.getClean()
   },
   methods: {

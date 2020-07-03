@@ -47,7 +47,7 @@ import { carOrder, carOperate, carCancle } from '@/api/order'
 export default {
   data() {
     return {
-      orderId: '1',
+      orderId: '',
       carData: {}
     }
   },
