@@ -1,13 +1,13 @@
 /*
  * @Author: CZTXXL
  * @Date: 2020-05-28 11:17:27
- * @LastEditTime: 2020-06-24 14:33:26
+ * @LastEditTime: 2020-07-01 15:53:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_B_template\src\api\websocket.js
  */
+import { getToken } from '@/utils/auth.js'
 const WS_URL = process.env.VUE_APP_WEBSOCKET_BASE_2_API
-console.log(WS_URL)
 let Socket = ''
 let setIntervalWebsocketPush = null
 let stateOfReconnect = false
