@@ -11,7 +11,7 @@ import './common/css/gast.css'
 import './common/css/fonts/iconfont.css'
 
 import './common/js/vant_ui.js'
-import '@/permission'
+// import '@/permission'
 
 Vue.config.productionTip = false
 

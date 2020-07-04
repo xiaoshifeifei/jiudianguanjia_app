@@ -16,6 +16,9 @@
     .van-popup--bottom{
         border-radius: 5px 5px 0 0;
     }
+    .van-popup--top{
+      top:30px !important
+    }
     .van-cell:not(:last-child)::after{
         right:20px;
     }
