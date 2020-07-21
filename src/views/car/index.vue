@@ -26,11 +26,11 @@
         </div>
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{carData.OrderSerialNo}}</span></div>
-        <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">2020-06-07 16:58:06</span></div>
+        <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{carData.CreateDate}}</span></div>
         <div class="clearfix pt_15"><span class="fl">预约租赁时间：</span><span class="fr">{{carData.RentBeginDate}}</span></div>
         <div v-if="carData.Status == 0" class="clearfix pt_15"><span class="fl">租赁时间：</span><span class="fr">{{carData.RentBeginDate}}</span></div>
         <div v-if="carData.Status == 1" class="clearfix pt_15"><span class="fl">归还时间：</span><span class="fr">{{carData.RentEndDate}}</span></div>
-        <div v-if="carData.Status == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">2020-06-07 16:58:06</span></div>
+        <div v-if="carData.Status == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{carData.UpdateDate}}</span></div>
       </div>
     </div>
     <div v-if="carData.Status == 0" class="btnBox btnBox1">
@@ -39,7 +39,7 @@
     </div>
     <div v-if="carData.Status == 1" class="btnBox btnBox1">
       <div class="btn cancle">取消</div>
-      <div class="btn confirm" @click="finishedHandle()">已租赁</div>
+      <div class="btn confirm" @click="finishedHandle()">已完成</div>
     </div>
 
     <div v-else class="btnBox mt_50 mb_5">
