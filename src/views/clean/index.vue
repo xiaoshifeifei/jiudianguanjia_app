@@ -2,7 +2,7 @@
   <div >
     <div class="main clearfix">
       <div class="bor"></div>
-      <div class="box clearfix">
+      <div class="box clearfix padd30">
         <div class="clearfix">
           <span class="fl fz_15 fw_7">{{cleanData.HotelName}}</span>
           <span v-if="cleanData.OrderStatus == 0" class="fr c_red">待清扫</span>

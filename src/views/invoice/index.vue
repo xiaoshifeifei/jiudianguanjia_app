@@ -2,11 +2,11 @@
   <div >
     <div class="main clearfix">
       <div class="bor"></div>
-      <div class="box clearfix">
+      <div class="box clearfix padd30">
         <div class="clearfix">
           <span class="fl fz_15 fw_7">{{invoiceData.HotelName}}</span>
-           <span v-if="invoiceData.OrderStatus == 0" class="fr c_red">待处理</span>
-          <span v-else-if="invoiceData.OrderStatus == 1" class="fr c_red">已完成</span>
+           <span v-if="invoiceData.InvoiceStatus == 0" class="fr c_red">待处理</span>
+          <span v-else-if="invoiceData.InvoiceStatus == 2" class="fr c_red">已完成</span>
           <span v-else class="fr c_red">已取消</span>
         </div>
         <div class="fz_15 order pt_15">发票订单</div>
@@ -18,11 +18,11 @@
         <div class="dash"></div>
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{invoiceData.InvoiceOrderNumber}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{invoiceData.CreateDate}}</span></div>
-        <div v-if="invoiceData.OrderStatus == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{invoiceData.UpdateDate}}</span></div>
-        <div v-if="invoiceData.OrderStatus == 1" class="clearfix pt_15"><span class="fl">完成时间：</span><span class="fr">{{invoiceData.UpdateDate}}</span></div>
+        <div v-if="invoiceData.InvoiceStatus == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{invoiceData.UpdateDate}}</span></div>
+        <div v-if="invoiceData.InvoiceStatus == 1" class="clearfix pt_15"><span class="fl">完成时间：</span><span class="fr">{{invoiceData.UpdateDate}}</span></div>
       </div>
     </div>
-    <div v-if="invoiceData.OrderStatus == 0" class="btnBox btnBox1">
+    <div v-if="invoiceData.InvoiceStatus == 0" class="btnBox btnBox1">
       <div class="btn cancle" @click="cancleHandle()">取消</div>
       <div class="btn confirm" @click="finishedHandle()">接受</div>
     </div>
@@ -64,7 +64,7 @@ export default {
     async finishedHandle() {
       let ids = []
       ids.push(this.orderId)
-      await invoiceOperate({ InvoiceOrderIDs: ids, OperateInvoiceStatus: 1 })
+      await invoiceOperate({ InvoiceOrderIDs: ids, OperateInvoiceStatus: 2 })
       this.getInvoice()
     }
   }

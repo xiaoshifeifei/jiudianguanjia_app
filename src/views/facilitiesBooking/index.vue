@@ -2,11 +2,11 @@
   <div >
     <div class="main clearfix">
       <div class="bor"></div>
-      <div class="box clearfix">
+      <div class="box clearfix padd30">
         <div class="clearfix">
           <span class="fl fz_15 fw_7">{{bookingData.HotelName}}</span>
-          <span v-if="bookingData.Status == 0" class="fr c_red">待付款</span>
-          <span v-else-if="bookingData.Status == 1" class="fr c_red">已完成</span>
+          <span v-if="bookingData.OrderStatus == 0" class="fr c_red">待付款</span>
+          <span v-else-if="bookingData.OrderStatus == 1" class="fr c_red">已完成</span>
           <span v-else class="fr c_red">已取消</span>
         </div>
         <div class="fz_15 order pt_15">设施预定订单</div>
@@ -20,11 +20,11 @@
         <div class="clearfix pt_15"><span class="fl">订单编号：</span><span class="fr">{{bookingData.SerialNumber}}</span></div>
         <div class="clearfix pt_15"><span class="fl">提交时间：</span><span class="fr">{{bookingData.CreateDate}}</span></div>
         <div class="clearfix pt_15"><span class="fl">预定时间：</span><span class="fr">{{bookingData.UseBeginDate}}</span></div>
-        <div v-if="bookingData.Status == 1" class="clearfix pt_15"><span class="fl">使用时间：</span><span class="fr">{{bookingData.UseEndDate}}</span></div>
-        <div v-if="bookingData.Status == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{bookingData.UpdateDate}}</span></div>
+        <div v-if="bookingData.OrderStatus == 1" class="clearfix pt_15"><span class="fl">使用时间：</span><span class="fr">{{bookingData.UseEndDate}}</span></div>
+        <div v-if="bookingData.OrderStatus == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">{{bookingData.UpdateDate}}</span></div>
       </div>
     </div>
-    <div v-if="bookingData.Status == 0" class="btnBox btnBox1">
+    <div v-if="bookingData.OrderStatus == 0" class="btnBox btnBox1">
       <div class="btn cancle" @click="cancleHandle()">取消</div>
       <div class="btn confirm" @click="finishedHandle()">完成</div>
     </div>

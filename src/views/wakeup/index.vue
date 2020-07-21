@@ -2,7 +2,7 @@
   <div>
     <div class="main clearfix">
       <div class="bor"></div>
-      <div class="box clearfix">
+      <div class="box clearfix padd30">
         <div class="clearfix">
           <span class="fl fz_15 fw_7"></span>
           <span v-if="wakeupData.OrderStatus == 0" class="fr c_red">待处理</span>
@@ -10,7 +10,7 @@
           <span v-else class="fr c_red">已取消</span>
         </div>
         <div class="fz_15 order pt_15">叫醒订单</div>
-        <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">知了酒店</span></div>
+        <div class="clearfix pt_15"><span class="fl">酒店：</span><span class="fr">{{wakeupData.HotelName}}</span></div>
         <div class="clearfix pt_15"><span class="fl">用户：</span><span class="fr">{{wakeupData.UserName}}</span></div>
         <!-- <div class="clearfix pt_15"><span class="fl">楼层：</span><span class="fr">0806-大床房</span></div> -->
         <div class="clearfix pt_15"><span class="fl">房号：</span><span class="fr">{{wakeupData.RoomNumber}}-{{wakeupData.Model}}</span></div>

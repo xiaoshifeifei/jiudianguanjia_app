@@ -2,11 +2,12 @@
   <div class="contain_box">
     <div class="main">
       <div class="bor"></div>
-      <div class="box clearfix mb_30">
+      <div class="box clearfix mb_30 padd30">
         <div class="clearfix">
           <span class="fl fz_15 fw_7">{{carData.HotelName}}</span>
           <span v-if="carData.Status == 0" class="fr c_red">待处理</span>
-          <span v-else-if="carData.Status == 1" class="fr c_red">已完成</span>
+          <span v-else-if="carData.Status == 1" class="fr c_red">已租赁</span>
+          <span v-else-if="carData.Status == 2" class="fr c_red">已完成</span>
           <span v-else class="fr c_red">已取消</span>
         </div>
         <div class="fz_15 order pt_15">租车订单</div>
@@ -32,10 +33,15 @@
         <div v-if="carData.Status == -1" class="clearfix pt_15"><span class="fl">取消时间：</span><span class="fr">2020-06-07 16:58:06</span></div>
       </div>
     </div>
-    <div v-if="carData.Status == 0" class="btnBox mt_50 mb_5">
+    <div v-if="carData.Status == 0" class="btnBox btnBox1">
       <div class="btn cancle" @click="cancleHandle()">取消</div>
-      <div class="btn confirm" @click="finishedHandle()">接受</div>
+      <div class="btn confirm" @click="finishedZL()">接受</div>
     </div>
+    <div v-if="carData.Status == 1" class="btnBox btnBox1">
+      <div class="btn cancle">取消</div>
+      <div class="btn confirm" @click="finishedHandle()">已租赁</div>
+    </div>
+
     <div v-else class="btnBox mt_50 mb_5">
       <!-- <div class="btn finished">完成</div> -->
     </div>
@@ -43,7 +49,7 @@
 </template>
 
 <script>
-import { carOrder, carOperate, carCancle } from '@/api/order'
+import { carOrder, carOperate, carCancle,carZl } from '@/api/order'
 export default {
   data() {
     return {
@@ -69,8 +75,12 @@ export default {
       await carCancle({ OrderID: this.orderId, CancelOrderStatus: -1 })
       this.getCar()
     },
+    async finishedZL() {
+      await carZl({ OrderID: this.orderId, LeaseOrderStatus: 1 })
+      this.getCar()
+    },
     async finishedHandle() {
-      await carOperate({ OrderID: this.orderId, CompleteOrderStatus: 1 })
+      await carOperate({ OrderID: this.orderId, CompleteOrderStatus: 2 })
       this.getCar()
     }
   }

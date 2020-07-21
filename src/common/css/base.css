@@ -430,3 +430,8 @@ a:focus,*:focus {
   background:#1e96fc ;
   color:#fff;
 }
+
+/* 公用 */
+.padd30{
+padding-bottom:120px;
+}

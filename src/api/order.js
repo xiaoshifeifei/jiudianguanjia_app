@@ -151,6 +151,14 @@ export function carOrder(params) {
     params
   })
 }
+// 租赁
+export function carZl(params) {
+  return request({
+    url: '/rent_car_order/lease',
+    method: 'post',
+    params
+  })
+}
 // 完成
 export function carOperate(data) {
   return request({
