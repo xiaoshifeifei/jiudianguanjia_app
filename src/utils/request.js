@@ -27,10 +27,10 @@ service.interceptors.request.use(
     // 获取token
     let token = store.getters.token
     // let isTokenOverdue = store.getters.isTokenOverdue
-    let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
+    // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
 
     if (token && !config.headers.authorization) {
-      config.headers.authorization = tokentype + ' ' + token
+      config.headers.authorization = 'Bearer' + ' ' + token
     }
     /*
      * loadingInstance = Loading.service();
@@ -91,9 +91,9 @@ service.interceptors.response.use(
           let data = {
             token: store.getters.token
           }
-          let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
+          // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
           let headers = {
-            authorization: tokentype + ' ' + store.getters.refreshToken
+            authorization: 'Bearer' + ' ' + store.getters.refreshToken
           }
 
           return axios({
