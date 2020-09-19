@@ -15,131 +15,134 @@ import { toUpperCase } from '@/utils/toUpperCase'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_API_URL, // url = base url + request url
-  timeout: 5000 // request timeout
-})
-/*
- * let loadingInstance;
- * request interceptor
- */
-service.interceptors.request.use(
-  config => {
-    // 获取token
-    let token = store.getters.token
-    // let isTokenOverdue = store.getters.isTokenOverdue
-    // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
-
-    if (token && !config.headers.authorization) {
-      config.headers.authorization = 'Bearer' + ' ' + token
-    }
+        baseURL: process.env.VUE_APP_API_URL, // url = base url + request url
+        timeout: 5000 // request timeout
+    })
     /*
-     * loadingInstance = Loading.service();
-     * showFullScreenLoading("loadingtext");
+     * let loadingInstance;
+     * request interceptor
      */
-    if (config.url != '/goods/upload') {
-      if (config.data && !config.data.param) {
-        config.data = qs.stringify(config.data)
-      }
-    }
-    return config
-  },
-  error => {
-    console.log(error)
-    return Promise.reject(error)
 
-  }
+service.interceptors.request.use(
+    config => {
+        // 获取token
+        // let token = store.getters.token
+        let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9qZGdqLnFtd2x4Y3guY29tIiwiYXVkIjoiaHR0cDpcL1wvamRnai5xbXdseGN4LmNvbSIsImlhdCI6MTYwMDQyMDcxOCwibmJmIjoxNjAwNDIwNzE4LCJzY29wZSI6ImFjY2VzcyIsImV4cCI6MTYwMDQ0OTUxOCwiZGF0YSI6eyJ1aWQiOjR9fQ.DApwSS4nr-EoJyqx3dkWoI0mvFanASVY9FV13rVK9P0'
+        console.log('token', token);
+        // let isTokenOverdue = store.getters.isTokenOverdue
+        // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
+
+        if (token && !config.headers.authorization) {
+            config.headers.authorization = 'Bearer' + ' ' + token
+        }
+        /*
+         * loadingInstance = Loading.service();
+         * showFullScreenLoading("loadingtext");
+         */
+        if (config.url != '/goods/upload') {
+            if (config.data && !config.data.param) {
+                config.data = qs.stringify(config.data)
+            }
+        }
+        return config
+    },
+    error => {
+        console.log(error)
+        return Promise.reject(error)
+
+    }
 )
 const errorMsg = message => {
-  return Notify({
-    message,
-    type: 'danger',
-    duration: 1000
-  })
-}
-// 是否正在刷新的标记
+        return Notify({
+            message,
+            type: 'danger',
+            duration: 1000
+        })
+    }
+    // 是否正在刷新的标记
 let isRefreshing = false
-// 重试队列，每一项将是一个待执行的函数形式
+    // 重试队列，每一项将是一个待执行的函数形式
 let requests = []
 let newToken = ''
 let newTokenType = ''
-// response interceptor
+    // response interceptor
 service.interceptors.response.use(
-  response => {
-    /*
-     * if (loadingInstance) {
-     *   loadingInstance.close();
-     * }
-     */
-    // hideFullScreenLoading();
-    const res = response.data
-    return res
-  },
-  error => {
-    /* 网络连接过程异常处理*/
-    /*
-     * if (loadingInstance) {
-     *   loadingInstance.close();
-     * }
-     */
-    // hideFullScreenLoading();
-    let { message, response } = error
-    if (response) {
-      let { code, msg } = response.data
-      if (code == 1001) {
-        let config = error.response.config
-        if (!isRefreshing) {
-          let data = {
-            token: store.getters.token
-          }
-          // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
-          let headers = {
-            authorization: 'Bearer' + ' ' + store.getters.refreshToken
-          }
+    response => {
+        /*
+         * if (loadingInstance) {
+         *   loadingInstance.close();
+         * }
+         */
+        // hideFullScreenLoading();
+        const res = response.data
+        return res
+    },
+    error => {
+        /* 网络连接过程异常处理*/
+        /*
+         * if (loadingInstance) {
+         *   loadingInstance.close();
+         * }
+         */
+        // hideFullScreenLoading();
+        let { message, response } = error
+        if (response) {
+            let { code, msg } = response.data
+            if (code == 1001) {
+                let config = error.response.config
+                if (!isRefreshing) {
+                    let data = {
+                            token: store.getters.token
+                        }
+                        // let tokentype = toUpperCase(store.getters.tokenType ? store.getters.tokenType : '')
+                    let headers = {
+                        authorization: 'Bearer' + ' ' + store.getters.refreshToken
+                    }
 
-          return axios({
-            method: 'post',
-            url: process.env.VUE_APP_API_URL + '/refresh',
-            data: qs.stringify(data),
-            headers
-          })
-            .then(res => {
-              newTokenType = toUpperCase(res.data.data.token_type ? res.data.data.token_type : '')
-              newToken = res.data.data.token
-              config.headers.authorization = `${newTokenType} ${newToken}`
-              store.dispatch('user/refreshToken', res.data.data)
-              return service(config)
-            })
-            .catch(() => {
-              store.dispatch('user/resetToken').then(() => {
-                location.reload()
-              })
-            })
-            .finally(() => {
-              isRefreshing = false
-              requests.forEach(cb => cb(newToken))
-              // 重试完了别忘了清空这个队列
-              requests = []
-            })
+                    return axios({
+                            method: 'post',
+                            url: process.env.VUE_APP_API_URL + '/refresh',
+                            data: qs.stringify(data),
+                            headers
+                        })
+                        .then(res => {
+                            newTokenType = toUpperCase(res.data.data.token_type ? res.data.data.token_type : '')
+                            newToken = res.data.data.token
+                            config.headers.authorization = `${newTokenType} ${newToken}`
+                            store.dispatch('user/refreshToken', res.data.data)
+                            return service(config)
+                        })
+                        .catch(() => {
+                            store.dispatch('user/resetToken').then(() => {
+                                location.reload()
+                            })
+                        })
+                        .finally(() => {
+                            isRefreshing = false
+                            requests.forEach(cb => cb(newToken))
+                                // 重试完了别忘了清空这个队列
+                            requests = []
+                        })
+                } else {
+                    // 正在刷新token，返回一个未执行resolve的promise
+                    return new Promise(resolve => {
+                        // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
+                        requests.push(token => {
+                            config.headers.authorization = `Bearer ${token}`
+                            resolve(service(config))
+                        })
+                    })
+                }
+            } else {
+                errorMsg(msg)
+            }
         } else {
-          // 正在刷新token，返回一个未执行resolve的promise
-          return new Promise(resolve => {
-            // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
-            requests.push(token => {
-              config.headers.authorization = `Bearer ${token}`
-              resolve(service(config))
-            })
-          })
+            if (message.includes('timeout')) {
+                message = '请求超时,请刷新一下'
+                errorMsg(message || '请求超时,请刷新一下')
+            }
         }
-      } else {
-        errorMsg(msg)
-      }
-    } else {
-      if (message.includes('timeout')) {
-        message = '请求超时,请刷新一下'
-        errorMsg(message || '请求超时,请刷新一下')
-      }
+        return Promise.reject(error)
     }
-    return Promise.reject(error)
-  }
 )
 export default service

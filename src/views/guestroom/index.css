@@ -1,0 +1,137 @@
+.mains {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+}
+.mains .content-1 {
+  width: 100%;
+  height: 50px;
+}
+.mains .content-1 .sous {
+  display: inline-block;
+  width: calc(100% - 110px);
+  vertical-align: middle;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-right: 10px;
+  vertical-align: top;
+}
+.mains .content-1 .sous .sous-1 {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.mains .content-1 .btn-ss {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border-radius: 25px;
+  font-size: 16px;
+}
+.mains .content-2 {
+  margin-top: 20px;
+  width: 100%;
+}
+.mains .content-2 .label-t {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #F4F4F4;
+}
+.mains .content-2 .label-t .fh {
+  width: 15%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+.mains .content-2 .label-t .lc {
+  width: 15%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+.mains .content-2 .label-t .wfmc {
+  width: 35%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+.mains .content-2 .label-t .wfmm {
+  width: 35%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+.mains .content-2 .class-box {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  overflow-x: visible;
+  overflow-y: auto;
+}
+.mains .content-2 .class-box .label-b {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #F4F4F4;
+}
+.mains .content-2 .class-box .label-b .fhx {
+  width: 15%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mains .content-2 .class-box .label-b .lcx {
+  width: 15%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mains .content-2 .class-box .label-b .wfmcx {
+  width: 35%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mains .content-2 .class-box .label-b .wfmmx {
+  width: 35%;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  font-size: 17px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mains .content-2 .class-box::-webkit-scrollbar {
+  display: none;
+}

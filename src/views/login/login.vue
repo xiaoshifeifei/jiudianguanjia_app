@@ -2,10 +2,15 @@
   <div class="login">
     <div class="loginBg">
       <div class="login_form">
-        <div class="text">绑定管理账号</div>
-        <div class="lineBor"></div>
+
+        <div class="text-zl">知了酒店管理平台</div>
+        <div class="text-chmp">Cicada hotel manadement platform</div>
+
+       <div class="ffcontent">
+          <div class="text">绑定管理账号</div>
+        <!-- <div class="lineBor"></div> -->
         <div class="account ipt mt_15">
-          <label for="account">账号</label>
+          <label for="account" class="img-cen"><img src="../../assets/images/login/tou.png" alt=""></label>
           <input id="account"
             name="AdminName"
             v-model="loginForm.AdminName"
@@ -16,7 +21,7 @@
         <div class="err" v-if="isCheckAdminName">请输入正确的账号</div>
         <div v-else class="err"></div>
         <div class="account ipt">
-          <label for="pswd">密码</label>
+          <label for="pswd" class="img-cen"><img src="../../assets/images/login/suo.png" alt=""></label>
           <input id="pswd"
             name="AdminPassword"
             v-model="loginForm.AdminPassword"
@@ -27,6 +32,12 @@
         </div>
         <div class="err" v-if="isCheckAdminPassword">请输入正确的密码</div>
         <div v-else class="err"></div>
+        <div
+        class="btn"
+        :class="[isLogin && userStatus==1 ? 'bc_146eeb' : 'bc_c3c3c3']"
+        @click="handleLogin"
+        >立即绑定</div>
+       </div>
       </div>
       <!-- <div class="login_form">
         <div class="account">
@@ -64,11 +75,11 @@
           <div class="bor"></div>
         </div>
       </div> -->
-      <div
+      <!-- <div
         class="btn"
         :class="[isLogin && userStatus==1 ? 'bc_146eeb' : 'bc_c3c3c3']"
         @click="handleLogin"
-      >绑定</div>
+      >绑定</div> -->
     </div>
   </div>
 </template>
@@ -168,18 +179,32 @@ export default {
 .loginBg{
   width:100%;
   // height: 667px;
-  background: url('../../assets/images/login/bg.png') no-repeat;
+  background: url('../../assets/images/login/bggj.png') no-repeat;
   background-size: 100%;
 }
 .login_form {
-  width:285px;
+  width:305px;
   margin: 0 auto;
-  padding-top:230px
+  padding-top:50px
+}
+.text-zl {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.text-chmp {
+  color: #fff;
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 25px;
 }
 .text{
-  color: #1e96fc;
-  font-size:30px;
-  text-align: center;
+  color: clock;
+  font-size: 23px;
+  font-weight: 700;
+  text-align: left;
 }
 .lineBor{
   width:40px;
@@ -187,14 +212,22 @@ export default {
   background:#1e96fc;
   margin: 5px auto;
 }
+.ffcontent {
+  width: 305px;
+  // height: 280px;
+  background-color: #fff;
+  padding: 24px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px -2px;
+}
 .btn {
-  width: 345px;
-  height: 40px;
-  margin: 90px auto 0;
+  width: 285px;
+  height: 50px;
+  // margin: 10px auto 0;
   background: linear-gradient(#51aefe, #37a2fd 62%, #1e96fc);
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
-  line-height: 40px;
+  line-height: 50px;
   color: #fff;
   font-size: 18px;
   font-family: PingFang SC;
@@ -217,10 +250,10 @@ label{
 .ipt {
   width:285px;
   font-size: 13px;
-  height: 35px;
+  height: 50px;
   color: #999;
-  line-height: 35px;
-  background:#fff;
+  line-height: 50px;
+  background:#FAF7FA;
   border-radius: 5px;
   box-shadow: 2px 3px 5px 0px rgba(0,8,20,0.05);
 }
@@ -228,5 +261,10 @@ label{
   height: 25px;
   color: #e81818;
   font-size: 10px;
+  margin-top: 5px;
+}
+.img-cen {
+  vertical-align: middle;
+  padding: 0 20px 0;
 }
 </style>

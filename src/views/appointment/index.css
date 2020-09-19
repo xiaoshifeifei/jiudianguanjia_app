@@ -1,0 +1,54 @@
+.mains {
+  background-color: #F8F8F8;
+  padding: 20px;
+  padding-top: 0;
+}
+.mains .card {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.mains .card .card-tb {
+  width: 100%;
+  height: 30px;
+  vertical-align: middle;
+  padding: 0 10px;
+}
+.mains .card .card-tb img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.mains .card .card-tb span {
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 10px;
+}
+.mains .card .content-1 {
+  width: 100%;
+  margin-top: 20px;
+  border-top: 1px solid #F5F5F7;
+  padding-top: 10px;
+}
+.mains .card .content-1 .content-2 {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+}
+.mains .card .content-1 .content-2 .span-1 {
+  display: inline-block;
+  height: 50px;
+  width: 70%;
+  font-size: 16px;
+  font-weight: 700;
+}
+.mains .card .content-1 .content-2 .span-2 {
+  display: inline-block;
+  height: 50px;
+  width: 30%;
+  text-align: end;
+  font-size: 16px;
+}
